@@ -1,15 +1,19 @@
 import streamlit as st
-from keras.models import load_model  
-import os
-from PIL import Image,ImageOps 
+import tensorflow as tf
+from PIL import Image
 import numpy as np
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-st.set_page_config(page_title="Eye Disease Detector",page_icon="🔎👁️",layout="wide")
+st.set_page_config(page_title="Eye Disease Detector", page_icon="🔎👁️", layout="wide")
 st.markdown("<h2 style='text-align: center; color: #2E8B57;'>Eye Disease Detection using Deep Learning 👁️🔍</h2>", unsafe_allow_html=True)
 st.markdown("---")
 st.subheader("Vision Insight: Automated Diagnosis of Diabetic Retinopathy, Cataract, Glaucoma, and Normal Vision using Advanced Deep Learning Technology")
 
-model = load_model('model.h5')
+try:
+    model = tf.keras.models.load_model('model.h5')
+except OSError as e:
+    st.error(f"Error loading the model: {e}")
+    st.stop()
 
 st.text("Please provide an EYE Image for Analysis.")
 uploaded_file = st.file_uploader("Choose an Image", type=['jpg', 'png', 'jpeg'])
@@ -19,9 +23,8 @@ if uploaded_file is not None:
     st.image(image, caption='Uploaded Image', width=540)
     st.write("Classifying...")
 
-    st.write("")
     img = image.convert('RGB')  # Convert PIL image to RGB format
-    img = img.resize((224,224))  # Adjust the dimensions as per your model's input requirements
+    img = img.resize((224, 224))  # Adjust the dimensions as per your model's input requirements
 
     # Normalize the image data
     img = np.array(img)
@@ -34,7 +37,6 @@ if uploaded_file is not None:
     prediction = model.predict(img)
     yclass = np.argmax(prediction, axis=1)
 
-    
     if yclass == 0:
         st.subheader("The patient has been diagnosed with Diabetic Retinopathy, a condition associated with diabetes that affects the blood vessels in the retina.")
     elif yclass == 1:
@@ -46,6 +48,4 @@ if uploaded_file is not None:
     else:
         st.subheader("Invalid classification.")
 
-
-
-st.markdown("<p style='text-align: center; color: green; font-size: 25px; margin-top: 50px;'>DEVELOPED BY - BHAVYA,DUSHYANTH,DHARANI,HARSHITH</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: green; font-size: 25px; margin-top: 50px;'>DEVELOPED BY - BHAVYA, DUSHYANTH, DHARANI, HARSHITH</p>", unsafe_allow_html=True)
