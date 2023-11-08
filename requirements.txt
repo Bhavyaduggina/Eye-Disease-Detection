@@ -1,4 +1,4 @@
-json
+
 keras
 numpy
 Pillow
