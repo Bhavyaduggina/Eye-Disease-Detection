@@ -4,4 +4,3 @@ numpy
 Pillow
 streamlit
 streamlit_lottie
-jsonlib
