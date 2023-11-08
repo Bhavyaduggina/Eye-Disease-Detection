@@ -2,7 +2,7 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image
 import numpy as np
-
+import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 st.set_page_config(page_title="Eye Disease Detector", page_icon="🔎👁️", layout="wide")
 st.markdown("<h2 style='text-align: center; color: #2E8B57;'>Eye Disease Detection using Deep Learning 👁️🔍</h2>", unsafe_allow_html=True)
