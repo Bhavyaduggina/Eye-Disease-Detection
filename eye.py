@@ -38,7 +38,7 @@ if uploaded_file is not None:
       reverse=False,
       loop=True,
       height=600,
-      width=2000,
+      width=1500,
       key='Hello'
     )
     st.write("")
