@@ -6,7 +6,7 @@ import numpy as np
 from streamlit_lottie import st_lottie
 import json
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-model = load_model('model.h5')
+model = load_model('model3.h5')
 st.set_page_config(page_title="Eye Disease Detector",page_icon="🔎👁️",layout="wide")
 def lottie_file(filepath: str):
     with open(filepath,'r') as f:
