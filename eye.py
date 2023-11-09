@@ -14,7 +14,7 @@ def lottie_file(filepath: str):
 st.markdown("<h2 style='text-align: center; color: #2E8B57;'>Eye Disease Detection using Deep Learning 👁️🔍</h2>", unsafe_allow_html=True)
 st.markdown("---")
 st.subheader("Vision Insight: Automated Diagnosis of Diabetic Retinopathy, Cataract, Glaucoma, and Normal Vision using Advanced Deep Learning Technology")
-lottie_pic=lottie_file("Animation - 1699444623556.json")
+lottie_pic = lottie_file("Animation - 1699444623556.json")
 st_lottie(
       lottie_pic,
       speed=1,
@@ -24,8 +24,6 @@ st_lottie(
       width=2000,
       key='Hi' )
 
-
-
 st.text("Please provide an EYE Image for Analysis.")
 uploaded_file = st.file_uploader("Choose an Image", type=['jpg', 'png', 'jpeg'])
 
@@ -33,7 +31,7 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption='Uploaded Image', width=540)
     st.write("Classifying...")
-    lottie_pic=lottie_file("Animation - 1699444321307.json")
+    lottie_pic = lottie_file("Animation - 1699444321307.json")
     st_lottie(
       lottie_pic,
       speed=1,
@@ -67,7 +65,5 @@ if uploaded_file is not None:
         st.subheader("The patient has been diagnosed with Glaucoma, a group of eye conditions that can cause blindness by damaging the optic nerve.")
     else:
         st.subheader("Invalid classification.")
-
-
 
 st.markdown("<p style='text-align: center; color: green; font-size: 25px; margin-top: 50px;'>DEVELOPED BY - BHAVYA,DUSHYANTH,DHARANI,HARSHITH</p>", unsafe_allow_html=True)
