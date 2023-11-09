@@ -21,7 +21,7 @@ st_lottie(
       reverse=False,
       loop=True,
       height=600,
-      width=2000,
+      width=1500,
       key='Hi' )
 
 st.text("Please provide an EYE Image for Analysis.")
